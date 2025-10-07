@@ -1,7 +1,7 @@
-# 🌐 tut18.html
+# 🌐 tut.html
 
 ### 🧠 Overview
-`tut18.html` is a part of my **Web Development learning journey**, where I explore the core structure and layout design of a webpage using **HTML5** along with basic styling and scripting concepts.  
+`tut.html` is a part of my **Web Development learning journey**, where I explore the core structure and layout design of a webpage using **HTML5** along with basic styling and scripting concepts.  
 This project demonstrates my growing understanding of web standards, semantic elements, and responsive web design.
 
 ---
