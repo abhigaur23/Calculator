@@ -1,0 +1,86 @@
+<!-- *******************CALCULATOR IN JS**************************** -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Calculator</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet"/>
+    <style>
+        * {
+            font-family: "Sora", sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 p-4 h-screen flex justify-center items-center">
+    <div class="w-[300px] rounded-2xl border space-y-4 border-gray-300 p-4 bg-white shadow-lg">
+        <!-- Display -->
+        <div class="p-2 bg-gray-50 rounded-2xl">
+            <input type="text" id="display" class="border-0 outline-none text-[25px] text-right w-full"/>
+        </div>
+        <!-- Buttons -->
+        <div class="grid grid-cols-4 gap-2">
+            <div onclick="appendvalue('1')" class="aspect-square bg-gray-100 cursor-pointer transition duration-300 hover:text-white hover:bg-gray-900 text-[20px] flex items-center justify-center border border-gray-300 rounded-full">1</div>
+            <div onclick="appendvalue('2')" class="aspect-square bg-gray-100 cursor-pointer transition duration-300 hover:text-white hover:bg-gray-900 text-[20px] flex items-center justify-center border border-gray-300 rounded-full">2</div>
+            <div onclick="appendvalue('3')" class="aspect-square bg-gray-100 cursor-pointer transition duration-300 hover:text-white hover:bg-gray-900 text-[20px] flex items-center justify-center border border-gray-300 rounded-full">3</div>
+            <div onclick="appendvalue('+')" class="aspect-square bg-orange-500 text-white cursor-pointer transition duration-300 hover:bg-orange-700 text-[20px] flex items-center justify-center border border-gray-300 rounded-full">+</div>
+
+            <div onclick="appendvalue('4')" class="aspect-square bg-gray-100 cursor-pointer transition duration-300 hover:text-white hover:bg-gray-900 text-[20px] flex items-center justify-center border border-gray-300 rounded-full">4</div>
+            <div onclick="appendvalue('5')" class="aspect-square bg-gray-100 cursor-pointer transition duration-300 hover:text-white hover:bg-gray-900 text-[20px] flex items-center justify-center border border-gray-300 rounded-full">5</div>
+            <div onclick="appendvalue('6')" class="aspect-square bg-gray-100 cursor-pointer transition duration-300 hover:text-white hover:bg-gray-900 text-[20px] flex items-center justify-center border border-gray-300 rounded-full">6</div>
+            <div onclick="appendvalue('-')" class="aspect-square bg-orange-500 text-white cursor-pointer transition duration-300 hover:bg-orange-700 text-[20px] flex items-center justify-center border border-gray-300 rounded-full">-</div>
+
+            <div onclick="appendvalue('7')" class="aspect-square bg-gray-100 cursor-pointer transition duration-300 hover:text-white hover:bg-gray-900 text-[20px] flex items-center justify-center border border-gray-300 rounded-full">7</div>
+            <div onclick="appendvalue('8')" class="aspect-square bg-gray-100 cursor-pointer transition duration-300 hover:text-white hover:bg-gray-900 text-[20px] flex items-center justify-center border border-gray-300 rounded-full">8</div>
+            <div onclick="appendvalue('9')" class="aspect-square bg-gray-100 cursor-pointer transition duration-300 hover:text-white hover:bg-gray-900 text-[20px] flex items-center justify-center border border-gray-300 rounded-full">9</div>
+            <div onclick="appendvalue('*')" class="aspect-square bg-orange-500 text-white cursor-pointer transition duration-300 hover:bg-orange-700 text-[20px] flex items-center justify-center border border-gray-300 rounded-full">*</div>
+
+            <div onclick="appendvalue('.')" class="aspect-square bg-orange-500 cursor-pointer transition duration-300 hover:text-white hover:bg-orange-700 text-[20px] flex items-center justify-center border border-gray-300 rounded-full">.</div>
+            <div onclick="appendvalue('0')" class="aspect-square bg-gray-100 cursor-pointer transition duration-300 hover:text-white hover:bg-gray-900 text-[20px] flex items-center justify-center border border-gray-300 rounded-full">0</div>
+            <div onclick="clearvalue()" class="aspect-square bg-orange-500 cursor-pointer transition duration-300 hover:text-white hover:bg-orange-700 text-[20px] flex items-center justify-center border border-gray-300 rounded-full">C</div>
+            <div onclick="appendvalue('/')" class="aspect-square bg-orange-500 text-white cursor-pointer transition duration-300 hover:bg-orange-700 text-[20px] flex items-center justify-center border border-gray-300 rounded-full">/</div>
+            <div class="col-span-3"></div>
+            <div onclick="Calculate()" class="aspect-square bg-orange-500 text-white cursor-pointer transition duration-300 hover:bg-orange-700 text-[20px] flex items-center justify-center border border-gray-300 rounded-full">=</div>
+
+        </div>
+    </div>
+ 
+    <script>
+        document.getElementById('display').focus();
+
+        function appendvalue(value){
+                var val = document.getElementById('display').value;
+                var canGo = true;
+                if(value == '+'||value == '-'||value == '*'||value == '/'){
+                    if((val[val.length - 1]) == '+' || (val[val.length - 1]) == '-' || (val[val.length - 1]) == '*' || (val[val.length - 1]) == '/'){
+                        canGo = false;
+                    }
+                }
+                if(canGo){
+                    document.getElementById('display').value += value;
+                }
+                else{
+                    var new_val = val.substr(0, (val.length - 1));
+                    document.getElementById('display').value = new_val + value;
+                }
+                
+                document.getElementById('display').focus();     
+
+        }
+        function clearvalue(){
+
+                document.getElementById('display').value = '';
+                document.getElementById('display').focus();     
+        }
+        function Calculate(){
+                document.getElementById('display').value = eval(document.getElementById('display').value);
+        }
+    </script>
+
+
+</body>
+</html>
